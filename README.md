@@ -23,7 +23,7 @@ or an object hash
 containing the parsed package details. Note: Only works in the Node execution environment.
 
 For instance in specifying further user defined mapped paths in additional config loading here is an example
-from backbone-parse-es6-todos
+from backbone-parse-es6-todos that maps a source file from a child dependency of `backbone`
 (https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/config/config-app-paths.js):
 ```
 var System = System || global.System;
