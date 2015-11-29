@@ -73,10 +73,14 @@ describe('JSPMParser Tests', function()
 
    it('parseNormalizedPackage', function()
    {
-      var backboneMappedPath = JSPMParser.parseNormalizedPackage(System, 'backbone');
+      var backboneNormalized = JSPMParser.parseNormalizedPackage(System, 'backbone');
 
-      assert(typeof backboneMappedPath === 'object');
+      assert(typeof backboneNormalized === 'object');
 
-      assert(JSON.stringify(backboneMappedPath) === '{"packageName":"backbone","actualPackageName":"backbone-parse-es6","isDependency":false,"fullPath":"/Volumes/Data/program/web/projects/TyphonJS/repos/typhonjs-config-jspm-parse/jspm_packages/github/typhonjs/backbone-parse-es6@master","relativePath":"jspm_packages/github/typhonjs/backbone-parse-es6@master","isAlias":true}');
+      assert(backboneNormalized.packageName === 'backbone');
+      assert(backboneNormalized.actualPackageName === 'backbone-parse-es6');
+      assert(backboneNormalized.isDependency === false);
+      assert(backboneNormalized.relativePath === 'jspm_packages/github/typhonjs/backbone-parse-es6@master');
+      assert(backboneNormalized.isAlias === true);
    });
 });
