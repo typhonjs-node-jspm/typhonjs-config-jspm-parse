@@ -1,0 +1,62 @@
+{
+  "name": "typhonjs-config-jspm-parse",
+  "version": "0.4.0",
+  "homepage": "https://github.com/typhonjs/typhonjs-config-jspm-parse/",
+  "description": "Provides utility functions to parse dependencies from JSPM entries in `package.json` and `config.js`.",
+  "license": "MIT",
+  "author": {
+    "name": "Mike Leahy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typhonjs/typhonjs-config-jspm-parse/typhonjs-config-jspm-parse.git"
+  },
+  "maintainers": [
+    {
+      "name": "Mike Leahy",
+      "email": "support@js.typhonrt.org"
+    }
+  ],
+  "dependencies": {
+    "jspm": "^0.16.15"
+  },
+  "devDependencies": {
+    "codecov.io": "^0.1.6",
+    "fs-extra": "^0.26.0",
+    "gulp": "^3.9.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3",
+    "power-assert": "^1.1.0",
+    "typhonjs-config-eslint": "^0.2.0",
+    "typhonjs-core-gulptasks": "^0.3.0"
+  },
+  "scripts": {
+    "test": "node ./script/test.js"
+  },
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "backbone": "github:typhonjs/backbone-parse-es6@master"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "keywords": [
+    "jspm",
+    "systemjs",
+    "utility",
+    "parser"
+  ],
+  "main": "src/parser.js",
+  "files": [
+    "src",
+    "CHANGELOG.md"
+  ],
+  "directories": {},
+  "bugs": {
+    "url": "https://github.com/typhonjs/typhonjs-config-jspm-parse/issues"
+  }
+}
