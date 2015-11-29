@@ -30,6 +30,7 @@ var System = System || global.System;
 
 var JSPMParser = JSPMParser || (typeof require !== 'undefined' ? require('typhonjs-config-jspm-parse') : undefined);
 
+var packageResolver = JSPMParser.getPackageResolver(System);
 var pathBackboneCommon = packageResolver.getDirectDependency('backbone', 'typhonjs-backbone-common');
 
 System.config(
