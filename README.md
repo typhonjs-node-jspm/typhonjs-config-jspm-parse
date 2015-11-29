@@ -8,8 +8,8 @@
 [![Coverage](https://img.shields.io/codecov/c/github/typhonjs/typhonjs-config-jspm-parse.svg)](https://codecov.io/github/typhonjs/typhonjs-config-jspm-parse)
 [![Dependency Status](https://www.versioneye.com/user/projects/565a739b036c320027000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/565a739b036c320027000008)
 
-Provides several utility functions to parse JSPM packages and find normalized paths
-from `package.json` and `config.js` using an instance of System / SystemJS Loader. This npm module works in the
+Provides several utility functions to parse [JSPM](http://jspm.io/) packages and find normalized paths
+from `package.json` and `config.js` using an instance of [System / SystemJS](https://github.com/systemjs/systemjs) Loader. This npm module works in the
 Node execution environment and the browser. The following functions are available:
 
 - `getPackageResolver` - Returns an instance of PackageResolver which provides all top level (topLevelPackages) and
@@ -53,7 +53,7 @@ System.config(
 });
 ```
 
-In the case of running in the browser load the `typhonjs-config-jspm-parse` before usage.
+In the case of running in the browser load `typhonjs-config-jspm-parse` before usage.
 ```
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
