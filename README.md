@@ -1,4 +1,12 @@
-# typhonjs-config-jspm-parse
+![typhonjs-config-jspm-parse](http://i.imgur.com/juoSdh4.png)
+
+[![NPM](https://img.shields.io/npm/v/typhonjs-config-jspm-parse.svg?label=npm)](https://www.npmjs.com/package/typhonjs-config-jspm-parse)
+[![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
+[![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs/typhonjs-core-gulptasks/blob/master/LICENSE)
+
+[![Build Status](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse.svg)](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse)
+[![Dependency Status](https://www.versioneye.com/user/projects/565a739b036c320027000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/565a739b036c320027000008)
+
 Provides several utility functions to parse JSPM packages and find normalized paths
 from `package.json` and `config.js` using an instance of System / SystemJS Loader. This npm module works in the
 Node execution environment and the browser. The following functions are available:
