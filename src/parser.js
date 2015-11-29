@@ -42,6 +42,15 @@
  * });
  * ```
  *
+ * In the case of running in the browser load `typhonjs-config-jspm-parse` before usage.
+ * ```
+ * <script src="jspm_packages/system.js"></script>
+ * <script src="config.js"></script>
+ * <script src="node_modules/typhonjs-config-jspm-parse/src/parser.js"></script>
+ * <script src="config/config-app-paths.js"></script>
+ * <script>System.import('main.js');</script>
+ * ```
+ *
  * Please see `package.json` and the `jspm` entries from backbone-parse-es6-todos:
  * https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/package.json
  *
