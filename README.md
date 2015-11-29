@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs/typhonjs-core-gulptasks/blob/master/LICENSE)
 
 [![Build Status](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse.svg)](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse)
+[![Coverage](https://img.shields.io/codecov/c/github/typhonjs/typhonjs-config-jspm-parse.svg)](https://codecov.io/github/typhonjs/typhonjs-config-jspm-parse)
 [![Dependency Status](https://www.versioneye.com/user/projects/565a739b036c320027000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/565a739b036c320027000008)
 
 Provides several utility functions to parse JSPM packages and find normalized paths
@@ -30,6 +31,8 @@ for the package. This function parses `System.packages` converting the entries i
 or an object hash
 containing the parsed package details. Note: Only works in the Node execution environment.
 
+To install: `npm install typhonjs-config-jspm-parse`
+
 For instance in specifying further user defined mapped paths in additional config loading here is an example
 from backbone-parse-es6-todos that maps a source file from a child dependency of `backbone`
 (https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/config/config-app-paths.js):
@@ -48,6 +51,15 @@ System.config(
       'mainEventbus': pathBackboneCommon + '/src/mainEventbus.js',
    }
 });
+```
+
+In the case of running in the browser load the `typhonjs-config-jspm-parse` before usage.
+```
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script src="node_modules/typhonjs-config-jspm-parse/src/parser.js"></script>
+<script src="config/config-app-paths.js"></script>
+<script>System.import('main.js');</script>
 ```
 
 Please see `package.json` and the `jspm` entries from `backbone-parse-es6-todos`:
