@@ -4,7 +4,7 @@
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs/typhonjs-core-gulptasks/blob/master/LICENSE)
 
-[![Build Status](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse.svg)](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse)
+[![Build Status](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse.svg?branch=master)](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse)
 [![Coverage](https://img.shields.io/codecov/c/github/typhonjs/typhonjs-config-jspm-parse.svg)](https://codecov.io/github/typhonjs/typhonjs-config-jspm-parse)
 [![Dependency Status](https://www.versioneye.com/user/projects/565a739b036c320027000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/565a739b036c320027000008)
 
