@@ -12,7 +12,7 @@ Provides several utility functions to parse [JSPM](http://jspm.io/) packages and
 from `package.json` and `config.js` using an instance of [System / SystemJS](https://github.com/systemjs/systemjs) Loader. This npm module works in the
 Node execution environment and the browser. The following functions are available:
 
-- [getPackageResolver](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L820)- Returns an instance of PackageResolver which provides all top level (topLevelPackages) and
+- [getPackageResolver](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L82)- Returns an instance of PackageResolver which provides all top level (topLevelPackages) and
 child package (childPackageMap) dependencies. An optional `packageFilter` parameter which is an array of strings will
 limit the resolver to specifically those top level packages. Additional methods: `getDirectDependency`,
 `getDirectDependencyMap` & `getUniqueDependencyList` provide functionality to respectively return
