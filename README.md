@@ -16,7 +16,7 @@ Node execution environment and the browser. The following functions are availabl
 child package (childPackageMap) dependencies. An optional `packageFilter` parameter which is an array of strings will
 limit the resolver to specifically those top level packages. Additional methods: `getDirectDependency`,
 `getDirectDependencyMap` & `getUniqueDependencyList` provide functionality to respectively return
-a specific direct child dependency, the direct child dependency map, or an array of all child dependencies.
+a specific direct child dependency, the direct child dependency map, or an array of all unique child dependencies.
 
 - [getRootPath](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L203) - Returns the root execution path.
 
