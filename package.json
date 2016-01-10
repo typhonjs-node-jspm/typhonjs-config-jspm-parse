@@ -1,6 +1,6 @@
 {
   "name": "typhonjs-config-jspm-parse",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/typhonjs/typhonjs-config-jspm-parse/",
   "description": "Provides utility functions to parse dependencies from JSPM entries in 'package.json' and 'config.js' via an instance of SystemJS / SystemJS Loader.",
   "license": "MIT",
