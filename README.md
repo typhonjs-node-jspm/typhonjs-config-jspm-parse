@@ -46,7 +46,7 @@ var System = System || global.System;
 var JSPMParser = JSPMParser || (typeof require !== 'undefined' ? require('typhonjs-config-jspm-parse') : undefined);
 
 var packageResolver = JSPMParser.getPackageResolver(System);
-var pathBackboneCommon = packageResolver.getDirectDependency('backbone', 'typhonjs-backbone-common');
+var pathBackboneCommon = packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-common');
 
 System.config(
 {
@@ -69,8 +69,8 @@ In the case of running in the browser load `typhonjs-config-jspm-parse` before u
 Please see `package.json` and the `jspm` entries from `backbone-parse-es6-todos`:
 https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/package.json
 
-In this case `backbone` is mapped to `github:typhonjs/backbone-parse-es6@master`
+In this case `backbone` is mapped to `github:typhonjs-parse/backbone-parse-es6@master`
 
-The above code example searches for the mapped package `typhonjs-backbone-common` which is mapped
-in the `package.json` of `github:typhonjs/backbone-parse-es6@master`:
-https://github.com/typhonjs/backbone-parse-es6/blob/master/package.json
+The above code example searches for the mapped package `typhonjs-core-backbone-common` which is mapped
+in the `package.json` of `github:typhonjs-parse/backbone-parse-es6@master`:
+https://github.com/typhonjs-parse/backbone-parse-es6/blob/master/package.json
