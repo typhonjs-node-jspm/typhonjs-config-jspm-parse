@@ -1,2 +1,7 @@
+## 0.2.0 (2016-01-10)
+- Added getPackageJSPMDependencies
+- Added getPackageJSPMDevDependencies
+- getPackageResolver -> getDirectDependency & getDirectDependencyMap can now also take an array of `childPackageNames` to retrieve package dependencies for any depth. 
+
 ## 0.1.0 (2015-11-28)
 - Initial release
