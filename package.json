@@ -18,7 +18,7 @@
     }
   ],
   "dependencies": {
-    "jspm": "^0.16.19"
+    "jspm": "^0.16.20"
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
