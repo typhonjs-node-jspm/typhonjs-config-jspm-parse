@@ -35,8 +35,8 @@ describe('JSPMParser Tests', function()
       var packageObj = JSON.parse(packageJSON);
 
       var packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj);
-      assert(JSON.stringify(packageMap)
-       === '{"babel":"npm:babel-core@^5.8.34","babel-runtime":"npm:babel-runtime@^5.8.34","core-js":"npm:core-js@^1.1.4"}');
+      assert(JSON.stringify(packageMap) ===
+       '{"babel":"npm:babel-core@^5.8.34","babel-runtime":"npm:babel-runtime@^5.8.34","core-js":"npm:core-js@^1.1.4"}');
 
       packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj, { babel: null });
       assert(JSON.stringify(packageMap) === '{"babel":"npm:babel-core@^5.8.34"}');
@@ -53,24 +53,26 @@ describe('JSPMParser Tests', function()
       assert(typeof packageResolver.getDirectDependencyMap  === 'function');
       assert(typeof packageResolver.getUniqueDependencyList  === 'function');
 
-      assert(JSON.stringify(Object.keys(packageResolver.topLevelPackages))
-       === '["babel","babel-runtime","backbone","core-js"]');
+      assert(JSON.stringify(Object.keys(packageResolver.topLevelPackages)) ===
+       '["babel","babel-runtime","backbone","core-js"]');
 
-      assert(packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-common')
-       === 'github:typhonjs/typhonjs-core-backbone-common@master');
+      assert(packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-common') ===
+       'github:typhonjs/typhonjs-core-backbone-common@master');
 
-      assert(packageResolver.getDirectDependency('backbone', ['typhonjs-core-backbone-common', 'typhonjs-core-utils'])
-       === 'github:typhonjs/typhonjs-core-utils@master');
+      assert(packageResolver.getDirectDependency('backbone',
+       ['typhonjs-core-backbone-common', 'typhonjs-core-utils']) ===
+        'github:typhonjs/typhonjs-core-utils@master');
 
-      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone')))
-       === '["backbone-es6","parse","typhonjs-core-backbone-common","typhonjs-core-backbone-events","typhonjs-core-backbone-query","typhonjs-core-utils","underscore"]');
-
-      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone',
-       'typhonjs-core-backbone-common'))) === '["typhonjs-core-utils","underscore"]');
+      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone'))) ===
+       '["backbone-es6","parse","typhonjs-core-backbone-common","typhonjs-core-backbone-events","typhonjs-core-backbone-query","typhonjs-core-utils","underscore"]');
 
       assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone',
-       ['typhonjs-core-backbone-common']))) === '["typhonjs-core-utils","underscore"]');
+       'typhonjs-core-backbone-common'))) ===
+        '["typhonjs-core-utils","underscore"]');
 
+      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone',
+       ['typhonjs-core-backbone-common']))) ===
+        '["typhonjs-core-utils","underscore"]');
 
       var allBackboneDependencies = packageResolver.getUniqueDependencyList('backbone');
 
