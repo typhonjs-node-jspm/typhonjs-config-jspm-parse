@@ -1,5 +1,7 @@
 var assert     = require('power-assert');
+var fs         = require('fs-extra');
 var jspm       = require('jspm');
+var path       = require('path');
 
 var JSPMParser = require('../../src/parser.js');
 
@@ -15,6 +17,31 @@ var System = new jspm.Loader();
  */
 describe('JSPMParser Tests', function()
 {
+   it('getPackageJSPMDependencies', function()
+   {
+      var packageJSON = fs.readFileSync(JSPMParser.getRootPath() + path.sep + 'package.json').toString();
+      var packageObj = JSON.parse(packageJSON);
+
+      var packageMap = JSPMParser.getPackageJSPMDependencies(packageObj);
+      assert(JSON.stringify(packageMap) === '{"backbone":"github:typhonjs-parse/backbone-parse-es6@master"}');
+
+      packageMap = JSPMParser.getPackageJSPMDependencies(packageObj, { backbone: null });
+      assert(JSON.stringify(packageMap) === '{"backbone":"github:typhonjs-parse/backbone-parse-es6@master"}');
+   });
+
+   it('getPackageJSPMDevDependencies', function()
+   {
+      var packageJSON = fs.readFileSync(JSPMParser.getRootPath() + path.sep + 'package.json').toString();
+      var packageObj = JSON.parse(packageJSON);
+
+      var packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj);
+      assert(JSON.stringify(packageMap)
+       === '{"babel":"npm:babel-core@^5.8.34","babel-runtime":"npm:babel-runtime@^5.8.34","core-js":"npm:core-js@^1.1.4"}');
+
+      packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj, { babel: null });
+      assert(JSON.stringify(packageMap) === '{"babel":"npm:babel-core@^5.8.34"}');
+   });
+
    it('getPackageResolver', function()
    {
       var packageResolver = JSPMParser.getPackageResolver(System);
@@ -29,20 +56,30 @@ describe('JSPMParser Tests', function()
       assert(JSON.stringify(Object.keys(packageResolver.topLevelPackages))
        === '["babel","babel-runtime","backbone","core-js"]');
 
-      assert(packageResolver.getDirectDependency('backbone', 'typhonjs-backbone-common')
+      assert(packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-common')
        === 'github:typhonjs/typhonjs-core-backbone-common@master');
 
+      assert(packageResolver.getDirectDependency('backbone', ['typhonjs-core-backbone-common', 'typhonjs-core-utils'])
+       === 'github:typhonjs/typhonjs-core-utils@master');
+
       assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone')))
-       === '["backbone-es6","backbone-query","parse","typhonjs-backbone-common","underscore"]');
+       === '["backbone-es6","parse","typhonjs-core-backbone-common","typhonjs-core-backbone-events","typhonjs-core-backbone-query","typhonjs-core-utils","underscore"]');
+
+      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone',
+       'typhonjs-core-backbone-common'))) === '["typhonjs-core-utils","underscore"]');
+
+      assert(JSON.stringify(Object.keys(packageResolver.getDirectDependencyMap('backbone',
+       ['typhonjs-core-backbone-common']))) === '["typhonjs-core-utils","underscore"]');
+
 
       var allBackboneDependencies = packageResolver.getUniqueDependencyList('backbone');
 
       assert(Array.isArray(allBackboneDependencies));
 
       /**
-       * Should have a length of 13 and be a variation of: ["github:typhonjs/backbone-es6@master","github:typhonjs/typhonjs-core-backbone-query@master","npm:parse@1.6.9","github:typhonjs/typhonjs-core-backbone-common@master","npm:underscore@1.8.3","npm:babel-runtime@5.8.34","github:jspm/nodelibs-process@0.1.2","npm:process@0.11.2","github:jspm/nodelibs-assert@0.1.0","npm:assert@1.3.0","npm:util@0.10.3","npm:inherits@2.0.1","github:jspm/nodelibs-util@0.1.0"]
+       * Should have a length of 15 and be a variation of: ["github:typhonjs/backbone-es6@master","npm:parse@1.6.14","github:typhonjs/typhonjs-core-backbone-common@master","github:typhonjs/typhonjs-core-backbone-events@master","github:typhonjs/typhonjs-core-backbone-query@master","github:typhonjs/typhonjs-core-utils@master","npm:underscore@1.8.3","npm:babel-runtime@5.8.34","github:jspm/nodelibs-process@0.1.2","npm:process@0.11.2","github:jspm/nodelibs-assert@0.1.0","npm:assert@1.3.0","npm:util@0.10.3","npm:inherits@2.0.1","github:jspm/nodelibs-util@0.1.0"]
        */
-      assert(allBackboneDependencies.length === 13);
+      assert(allBackboneDependencies.length === 15);
    });
 
    it('getRootPath', function()
@@ -66,9 +103,9 @@ describe('JSPMParser Tests', function()
       assert(typeof childDependencies === 'object');
 
       /**
-       * Should have a length of 16
+       * Should have a length of 17
        */
-      assert(Object.keys(childDependencies).length === 16);
+      assert(Object.keys(childDependencies).length === 17);
    });
 
    it('parseNormalizedPackage', function()
@@ -80,7 +117,7 @@ describe('JSPMParser Tests', function()
       assert(backboneNormalized.packageName === 'backbone');
       assert(backboneNormalized.actualPackageName === 'backbone-parse-es6');
       assert(backboneNormalized.isDependency === false);
-      assert(backboneNormalized.relativePath === 'jspm_packages/github/typhonjs/backbone-parse-es6@master');
+      assert(backboneNormalized.relativePath === 'jspm_packages/github/typhonjs-parse/backbone-parse-es6@master');
       assert(backboneNormalized.isAlias === true);
    });
 });
