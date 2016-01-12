@@ -577,6 +577,7 @@
       {
          getPackageJSPMDependencies: getPackageJSPMDependencies,
          getPackageJSPMDevDependencies: getPackageJSPMDevDependencies,
+         getPackageResolver: getPackageResolver,
          getRootPath: getRootPath,
          getTopLevelDependencies: getTopLevelDependencies,
          parseChildDependencies: parseChildDependencies,
