@@ -1,3 +1,7 @@
+## 0.2.1 (2016-01-11)
+- Minor README.md change
+- Fixed lack of export for `getPackageResolver` for browser access.
+ 
 ## 0.2.0 (2016-01-10)
 - Added getPackageJSPMDependencies
 - Added getPackageJSPMDevDependencies
