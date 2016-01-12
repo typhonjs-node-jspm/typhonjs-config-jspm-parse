@@ -46,13 +46,13 @@ var System = System || global.System;
 var JSPMParser = JSPMParser || (typeof require !== 'undefined' ? require('typhonjs-config-jspm-parse') : undefined);
 
 var packageResolver = JSPMParser.getPackageResolver(System);
-var pathBackboneCommon = packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-common');
+var pathBackboneEvents = packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-events');
 
 System.config(
 {
    map:
    {
-      'mainEventbus': pathBackboneCommon + '/src/mainEventbus.js',
+      'mainEventbus': pathBackboneEvents + '/src/mainEventbus.js',
    }
 });
 ```
