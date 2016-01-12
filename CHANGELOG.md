@@ -1,3 +1,6 @@
+## 0.3.0 (2016-01-11)
+- No new features. Stable version release coordinated with `typhonjs-core-gulptasks@0.4.0`
+
 ## 0.2.1 (2016-01-11)
 - Minor README.md change
 - Fixed lack of export for `getPackageResolver` for browser access.
