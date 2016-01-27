@@ -22,11 +22,11 @@
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
-    "fs-extra": "^0.26.4",
+    "fs-extra": "^0.26.5",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
     "istanbul": "^0.4.2",
-    "mocha": "^2.3.4",
+    "mocha": "^2.4.3",
     "power-assert": "^1.2.0",
     "typhonjs-config-eslint": "^0.2.1"
   },
