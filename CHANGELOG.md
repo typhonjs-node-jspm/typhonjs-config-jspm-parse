@@ -1,3 +1,6 @@
+## 0.4.0 (2016-01-27)
+- No new features. Removed dependence on `typhonjs-core-gulptasks`. Updated JSPM version to `0.16.25`.
+
 ## 0.3.0 (2016-01-11)
 - No new features. Stable version release coordinated with `typhonjs-core-gulptasks@0.4.0`
 
