@@ -37,11 +37,7 @@ containing the parsed package details. Note: Only works in the Node execution en
 
 To install: `npm install typhonjs-config-jspm-parse`
 
-Latest significant changes:
-- 0.2.0 
-  - Added getPackageJSPMDependencies
-  - Added getPackageJSPMDevDependencies
-  - getPackageResolver -> getDirectDependency & getDirectDependencyMap can now also take an array of `childPackageNames` to     retrieve package dependencies for any depth.
+For the latest significant changes please see the [CHANGELOG](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/CHANGELOG.md).
 
 For instance in specifying further user defined mapped paths in additional config loading here is an example
 from backbone-parse-es6-todos that maps a source file from a child dependency of `backbone`
@@ -77,6 +73,6 @@ https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/package.j
 
 In this case `backbone` is mapped to `github:typhonjs-parse/backbone-parse-es6@master`
 
-The above code example searches for the mapped package `typhonjs-core-backbone-common` which is mapped
+The above code example searches for the mapped package `typhonjs-core-backbone-events` which is mapped
 in the `package.json` of `github:typhonjs-parse/backbone-parse-es6@master`:
 https://github.com/typhonjs-parse/backbone-parse-es6/blob/master/package.json
