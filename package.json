@@ -35,6 +35,7 @@
     "test-coverage": "node ./script/test.js --coverage"
   },
   "jspm": {
+    "main": false,
     "directories": {},
     "dependencies": {
       "backbone": "github:typhonjs-parse/backbone-parse-es6@master"
