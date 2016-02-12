@@ -3,6 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/typhonjs-config-jspm-parse.svg?label=npm)](https://www.npmjs.com/package/typhonjs-config-jspm-parse)
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs/typhonjs-core-gulptasks/blob/master/LICENSE)
+[![Gitter](https://img.shields.io/gitter/room/typhonjs/TyphonJS.svg)](https://gitter.im/typhonjs/TyphonJS)
 
 [![Build Status](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse.svg?branch=master)](https://travis-ci.org/typhonjs/typhonjs-config-jspm-parse)
 [![Coverage](https://img.shields.io/codecov/c/github/typhonjs/typhonjs-config-jspm-parse.svg)](https://codecov.io/github/typhonjs/typhonjs-config-jspm-parse)
