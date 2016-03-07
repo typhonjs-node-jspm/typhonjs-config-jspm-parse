@@ -75,5 +75,5 @@ https://github.com/typhonjs-demos/backbone-parse-es6-todos/blob/master/package.j
 In this case `backbone` is mapped to `github:typhonjs-parse/backbone-parse-es6@master`
 
 The above code example searches for the mapped package `typhonjs-core-backbone-events` which is mapped
-in the `package.json` of `github:typhonjs-parse/backbone-parse-es6@master`:
-https://github.com/typhonjs-parse/backbone-parse-es6/blob/master/package.json
+in the `package.json` of `github:typhonjs-backbone-parse/backbone-parse-es6@master`:
+https://github.com/typhonjs-backbone-parse/backbone-parse-es6/blob/master/package.json
