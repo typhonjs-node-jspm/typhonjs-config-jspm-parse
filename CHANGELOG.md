@@ -1,3 +1,6 @@
+## 0.4.1 (2016-03-07)
+- No new features. Removed dependence on `jspm`. Integrated `typhonjs-npm-build-test`.
+
 ## 0.4.0 (2016-01-27)
 - No new features. Removed dependence on `typhonjs-core-gulptasks`. Updated JSPM version to `0.16.25`.
 
