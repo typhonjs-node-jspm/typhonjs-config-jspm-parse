@@ -533,7 +533,7 @@
             // If an extra parser function is supplied then allow it to filter / extend result.
             if (typeof extraParser === 'function') { result = extraParser(result, silent, logTitle); }
          }
-         catch(err)
+         catch (err)
          {
             if (!silent)
             {

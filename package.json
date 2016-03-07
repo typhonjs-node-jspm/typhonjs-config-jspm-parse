@@ -1,9 +1,9 @@
 {
   "name": "typhonjs-config-jspm-parse",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/typhonjs/typhonjs-config-jspm-parse/",
   "description": "Provides utility functions to parse dependencies from JSPM entries in 'package.json' and 'config.js' via an instance of SystemJS / SystemJS Loader.",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "author": {
     "name": "Mike Leahy"
   },
@@ -17,45 +17,43 @@
       "email": "support@js.typhonrt.org"
     }
   ],
-  "dependencies": {
-    "jspm": "^0.16.25"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "codecov.io": "^0.1.6",
-    "fs-extra": "^0.26.5",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
-    "istanbul": "^0.4.2",
-    "mocha": "^2.4.4",
-    "power-assert": "^1.2.0",
-    "typhonjs-config-eslint": "^0.2.1"
+    "jspm": "^0.16.0",
+    "typhonjs-config-eslint": "^0.4.0",
+    "typhonjs-npm-build-test": "^0.0.10"
   },
   "scripts": {
-    "test": "node ./script/test.js",
-    "test-coverage": "node ./script/test.js --coverage"
+    "eslint": "eslint .",
+    "prepublish": "node ./node_modules/typhonjs-npm-scripts-publish/scripts/prepublish.js",
+    "test": "node ./node_modules/typhonjs-npm-scripts-test-mocha/scripts/test.js",
+    "test-coverage": "node ./node_modules/typhonjs-npm-scripts-test-mocha/scripts/test-coverage.js"
   },
   "jspm": {
-    "main": false,
     "directories": {},
     "dependencies": {
-      "backbone": "github:typhonjs-parse/backbone-parse-es6@master"
+      "backbone": "github:typhonjs-backbone-parse/backbone-parse-es6@master"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.35",
-      "babel-runtime": "npm:babel-runtime@^5.8.35",
-      "core-js": "npm:core-js@^1.2.6"
+      "babel": "npm:babel-core@5.8.35",
+      "babel-runtime": "npm:babel-runtime@5.8.35",
+      "core-js": "npm:core-js@1.2.6"
     }
+  },
+  "typhonjs": {
+    "scmJSPMInstall": false
   },
   "keywords": [
     "jspm",
     "systemjs",
     "utility",
-    "parser"
+    "parser",
+    "typhonjs"
   ],
   "main": "src/parser.js",
   "files": [
     "src",
-    "CHANGELOG.md"
+    "AUTHORS.md"
   ],
   "directories": {},
   "bugs": {
