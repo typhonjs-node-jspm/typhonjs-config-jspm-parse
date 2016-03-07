@@ -13,32 +13,32 @@ Provides several utility functions to parse [JSPM](http://jspm.io/) packages and
 from `package.json` and `config.js` using an instance of [System / SystemJS](https://github.com/systemjs/systemjs) Loader. This npm module works in the
 Node execution environment and the browser. The following functions are available:
 
-- [getPackageJSPMDependencies](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L90) - Parses the packageObj / top level package.json for the JSPM entry to index JSPM dependencies. If an existing `jspmPackageMap` object hash exists then only the keys in that hash are resolved against `jspm.dependencies` entry in `package.json`.
+- [getPackageJSPMDependencies](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L90) - Parses the packageObj / top level package.json for the JSPM entry to index JSPM dependencies. If an existing `jspmPackageMap` object hash exists then only the keys in that hash are resolved against `jspm.dependencies` entry in `package.json`.
 
-- [getPackageJSPMDevDependencies](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L149) - Parses the packageObj / top level package.json for the JSPM entry to index JSPM devDependencies. If an existing `jspmPackageMap` object hash exists then only the keys in that hash are resolved against `jspm.devDependencies` entry in `package.json`.
+- [getPackageJSPMDevDependencies](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L149) - Parses the packageObj / top level package.json for the JSPM entry to index JSPM devDependencies. If an existing `jspmPackageMap` object hash exists then only the keys in that hash are resolved against `jspm.devDependencies` entry in `package.json`.
 
-- [getPackageResolver](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L208)- Returns an instance of PackageResolver which provides all top level (topLevelPackages) and
+- [getPackageResolver](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L208)- Returns an instance of PackageResolver which provides all top level (topLevelPackages) and
 child package (childPackageMap) dependencies. An optional `packageFilter` parameter which is an array of strings will
 limit the resolver to specifically those top level packages. Additional methods: `getDirectDependency`,
 `getDirectDependencyMap` & `getUniqueDependencyList` provide functionality to respectively return
 a specific direct child dependency, the direct child dependency map, or an array of all unique child dependencies.
 
-- [getRootPath](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L358) - Returns the root execution path.
+- [getRootPath](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L358) - Returns the root execution path.
 
-- [getTopLevelDependencies](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L409) - Returns all top level package dependencies and devDependencies. If `jspmPackages` is
+- [getTopLevelDependencies](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L409) - Returns all top level package dependencies and devDependencies. If `jspmPackages` is
 defined only the keys of `jspmPackages` will be resolved.
 
-- [parseChildDependencies](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L434) - Provides a map of all child dependencies defined in `config.js` / `System.packages`.
+- [parseChildDependencies](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L434) - Provides a map of all child dependencies defined in `config.js` / `System.packages`.
 `System.packages` stores the mapped dependency paths by a `file://` reference, but we actually want the mapped paths
 for the package. This function parses `System.packages` converting the entries into the desired format.
 
-- [parseNormalizedPackage](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/src/parser.js#L478) - Attempts to normalize and parse a packageName returning `null` if it is an invalid package
+- [parseNormalizedPackage](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/src/parser.js#L478) - Attempts to normalize and parse a packageName returning `null` if it is an invalid package
 or an object hash
 containing the parsed package details. Note: Only works in the Node execution environment.
 
 To install: `npm install typhonjs-config-jspm-parse`
 
-For the latest significant changes please see the [CHANGELOG](https://github.com/typhonjs/typhonjs-config-jspm-parse/blob/master/CHANGELOG.md).
+For the latest significant changes please see the [CHANGELOG](https://github.com/typhonjs-node-jspm/typhonjs-config-jspm-parse/blob/master/CHANGELOG.md).
 
 For instance in specifying further user defined mapped paths in additional config loading here is an example
 from backbone-parse-es6-todos that maps a source file from a child dependency of `backbone`
