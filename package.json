@@ -41,7 +41,7 @@
     }
   },
   "typhonjs": {
-    "scmJSPMInstall": false
+    "scmAutoInstallJSPM": false
   },
   "keywords": [
     "jspm",
