@@ -93,16 +93,15 @@
       logTitle = logTitle || 'typhonjs-config-jspm-parse';
 
       // Return early if there is no `jspm` entry in `package.json`.
+      /* istanbul ignore if */
       if (typeof packageObj.jspm !== 'object')
       {
-         if (!silent)
-         {
-            console.log(logTitle + ' - Warning: could not locate `jspm` entry in `package.json`.');
-         }
+         if (!silent) { console.log(logTitle + ' - Warning: could not locate `jspm` entry in `package.json`.'); }
          return jspmPackageMap || {};
       }
 
       // Return early if there is no `jspm.dependencies` entry in `package.json`.
+      /* istanbul ignore if */
       if (typeof packageObj.jspm.dependencies !== 'object')
       {
          if (!silent)
@@ -117,6 +116,7 @@
       {
          for (var key in jspmPackageMap)
          {
+            /* istanbul ignore else */
             if (typeof packageObj.jspm.dependencies[key] !== 'undefined')
             {
                jspmPackageMap[key] = packageObj.jspm.dependencies[key];
@@ -152,16 +152,15 @@
       logTitle = logTitle || 'typhonjs-config-jspm-parse';
 
       // Return early if there is no `jspm` entry in `package.json`.
+      /* istanbul ignore if */
       if (typeof packageObj.jspm !== 'object')
       {
-         if (!silent)
-         {
-            console.log(logTitle + ' - Warning: could not locate `jspm` entry in `package.json`.');
-         }
+         if (!silent) { console.log(logTitle + ' - Warning: could not locate `jspm` entry in `package.json`.'); }
          return jspmPackageMap || {};
       }
 
       // Return early if there is no `jspm.dependencies` entry in `package.json`.
+      /* istanbul ignore if */
       if (typeof packageObj.jspm.devDependencies !== 'object')
       {
          if (!silent)
@@ -176,6 +175,7 @@
       {
          for (var key in jspmPackageMap)
          {
+            /* istanbul ignore else */
             if (typeof packageObj.jspm.devDependencies[key] !== 'undefined')
             {
                jspmPackageMap[key] = packageObj.jspm.devDependencies[key];
@@ -234,10 +234,12 @@
       {
          var topLevelKey = packageResolver.topLevelPackages[topLevelPackageName];
 
+         /* istanbul ignore if */
          if (typeof packageResolver.childPackageMap[topLevelKey] !== 'object') { return undefined; }
 
          if (typeof childPackageNames === 'string') { childPackageNames = [childPackageNames]; }
 
+         /* istanbul ignore if */
          if (!Array.isArray(childPackageNames)) { throw new TypeError('childPackageNames is not an array.'); }
 
          var nextChildKey = topLevelKey;
@@ -247,6 +249,7 @@
             nextChildKey = typeof packageResolver.childPackageMap[nextChildKey] === 'object' ?
              packageResolver.childPackageMap[nextChildKey][childPackageNames[cntr]] : undefined;
 
+            /* istanbul ignore if */
             if (nextChildKey === undefined) { break; }
          }
 
@@ -265,12 +268,14 @@
       {
          var topLevelKey = packageResolver.topLevelPackages[topLevelPackageName];
 
+         /* istanbul ignore if */
          if (typeof packageResolver.childPackageMap[topLevelKey] !== 'object') { return undefined; }
 
          if (typeof childPackageNames === 'undefined') { return packageResolver.childPackageMap[topLevelKey]; }
 
          if (typeof childPackageNames === 'string') { childPackageNames = [childPackageNames]; }
 
+         /* istanbul ignore if */
          if (!Array.isArray(childPackageNames)) { throw new TypeError('childPackageNames is not an array.'); }
 
          var nextChildKey = topLevelKey;
@@ -280,6 +285,7 @@
             nextChildKey = typeof packageResolver.childPackageMap[nextChildKey] === 'object' ?
              packageResolver.childPackageMap[nextChildKey][childPackageNames[cntr]] : undefined;
 
+            /* istanbul ignore if */
             if (nextChildKey === undefined) { break; }
          }
 
@@ -300,6 +306,7 @@
 
          if (typeof topLevelPackageFilter === 'string') { topLevelPackageFilter = [topLevelPackageFilter]; }
 
+         /* istanbul ignore if */
          if (!Array.isArray(topLevelPackageFilter)) { throw new TypeError('topLevelPackageFilter is not an array.'); }
 
          // Stores seen packages to eliminate duplicates.
@@ -362,6 +369,7 @@
       /* eslint-disable no-undef */
 
       // environent baseURI detection
+      /* istanbul ignore else */
       if (typeof document !== 'undefined' && document.getElementsByTagName)
       {
          baseURI = document.baseURI;
@@ -501,6 +509,7 @@
       var isDependency = packageName.indexOf('@') >= 0;
 
       // Only process valid JSPM packages
+      /* istanbul ignore else */
       if (normalized.indexOf('jspm_packages') >= 0)
       {
          // Parse the file URL.
@@ -517,7 +526,15 @@
             var actualPackageName = parsedPath.name.split('@').shift();
 
             // Verify that the full path to the JSPM package source exists.
-            if (!fs.existsSync(fullPath)) { throw new Error("full path generated '" + fullPath + "' does not exist"); }
+            /* istanbul ignore next */
+            try
+            {
+               if (!fs.statSync(fullPath).isDirectory())
+               {
+                  throw new Error("full path generated '" + fullPath + "' does not exist");
+               }
+            }
+            catch (err) { throw new Error("full path generated '" + fullPath + "' does not exist"); }
 
             result =
             {
@@ -535,6 +552,7 @@
          }
          catch (err)
          {
+            /* istanbul ignore if */
             if (!silent)
             {
                console.log("JSPMParser - " + logTitle + " - " + err + " for JSPM package '" + packageName + "'");
@@ -545,6 +563,7 @@
       }
       else
       {
+         /* istanbul ignore if */
          if (!silent)
          {
             console.log("JSPMParser - " + logTitle + " - Warning: skipping '" + packageName

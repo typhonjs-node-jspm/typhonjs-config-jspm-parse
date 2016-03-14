@@ -1,3 +1,6 @@
+## 0.5.0 (2016-03-13)
+- No new features. Finished integrating `typhonjs-npm-build-test`.
+
 ## 0.4.1 (2016-03-07)
 - No new features. Removed dependence on `jspm`. Integrated `typhonjs-npm-build-test`.
 

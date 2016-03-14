@@ -6,4 +6,4 @@ before_script:
   - jspm install
 script:
   - npm run eslint
-  - TRAVIS=1 npm run test-coverage
+  - npm run test-coverage
