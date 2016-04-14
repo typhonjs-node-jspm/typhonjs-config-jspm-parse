@@ -607,7 +607,7 @@
 
             // Remove any local directory reference.
             filename = packageJSON.jspm.main;
-            filename = filename.replace(new RegExp(`^\.${path.sep === '\\' ? `\\${path.sep}` : path.sep}`), '');
+            filename = filename.replace(new RegExp('^\.' + (path.sep === '\\' ? '\\' + path.sep : path.sep)), '');
 
             result.fullPathMain = result.fullPath + path.sep + filename;
             result.relativePathMain = result.relativePath + path.sep + filename;
@@ -618,7 +618,7 @@
 
             // Remove any local directory reference.
             filename = packageJSON.main;
-            filename = filename.replace(new RegExp(`^\.${path.sep === '\\' ? `\\${path.sep}` : path.sep}`), '');
+            filename = filename.replace(new RegExp('^\.' + (path.sep === '\\' ? '\\' + path.sep : path.sep)), '');
 
             result.fullPathMain = result.fullPath + path.sep + filename;
             result.relativePathMain = result.relativePath + path.sep + filename;
@@ -658,7 +658,7 @@
          values = values[1].split(path.sep);
 
          result.githubOwner = values[1];
-         result.link = 'https://github.com/' + result.githubOwner +'/' + result.actualPackageName;
+         result.link = 'https://github.com/' + result.githubOwner + '/' + result.actualPackageName;
       }
       else if (values[1].indexOf('npm') === 0)
       {
