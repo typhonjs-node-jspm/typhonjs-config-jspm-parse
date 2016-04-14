@@ -79,9 +79,9 @@ describe('JSPMParser Tests', function()
       assert(Array.isArray(allBackboneDependencies));
 
       /**
-       * Should have a length of 15 and be a variation of: ["github:typhonjs/backbone-es6@master","npm:parse@1.6.14","github:typhonjs/typhonjs-core-backbone-common@master","github:typhonjs/typhonjs-core-backbone-events@master","github:typhonjs/typhonjs-core-backbone-query@master","github:typhonjs/typhonjs-core-utils@master","npm:underscore@1.8.3","npm:babel-runtime@5.8.34","github:jspm/nodelibs-process@0.1.2","npm:process@0.11.2","github:jspm/nodelibs-assert@0.1.0","npm:assert@1.3.0","npm:util@0.10.3","npm:inherits@2.0.1","github:jspm/nodelibs-util@0.1.0"]
+       * Should have a length of 17 and be a variation of: ["github:typhonjs/backbone-es6@master","npm:parse@1.6.14","github:typhonjs/typhonjs-core-backbone-common@master","github:typhonjs/typhonjs-core-backbone-events@master","github:typhonjs/typhonjs-core-backbone-query@master","github:typhonjs/typhonjs-core-utils@master","npm:underscore@1.8.3","npm:babel-runtime@5.8.34","github:jspm/nodelibs-process@0.1.2","npm:process@0.11.2","github:jspm/nodelibs-assert@0.1.0","npm:assert@1.3.0","npm:util@0.10.3","npm:inherits@2.0.1","github:jspm/nodelibs-util@0.1.0"]
        */
-      assert(allBackboneDependencies.length === 15);
+      assert(allBackboneDependencies.length === 17);
    });
 
    it('getRootPath', function()
@@ -105,9 +105,9 @@ describe('JSPMParser Tests', function()
       assert(typeof childDependencies === 'object');
 
       /**
-       * Should have a length of 17
+       * Should have a length of 18
        */
-      assert(Object.keys(childDependencies).length === 17);
+      assert(Object.keys(childDependencies).length === 18);
    });
 
    it('parseNormalizedPackage', function()
