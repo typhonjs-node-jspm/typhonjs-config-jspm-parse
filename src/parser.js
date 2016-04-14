@@ -545,6 +545,13 @@
                relativePath: relativePath
             };
 
+            // Parses relative path for additional data such as SCM type and version.
+            parseRelativePath(result, path);
+
+            // Parses package.json if available for any `main` entry point.
+            parsePackageJSON(result, fs, path);
+
+            // If a package is aliased the packageName is different than the actual package name.
             result.isAlias = result.packageName !== actualPackageName;
 
             // If an extra parser function is supplied then allow it to filter / extend result.
@@ -569,6 +576,95 @@
             console.log("JSPMParser - " + logTitle + " - Warning: skipping '" + packageName
              + "' as it does not appear to be a JSPM package.");
          }
+      }
+
+      return result;
+   }
+
+   /**
+    * Parses any associated `package.json` for main entry points for JSPM / NPM packages.
+    *
+    * @param {object}   result - Stores parsed package data.
+    * @param {object}   fs - Node fs module.
+    * @param {object}   path - Node path module.
+    *
+    * @returns {*}
+    */
+   function parsePackageJSON(result, fs, path)
+   {
+      var packagePath = result.fullPath + path.sep + 'package.json';
+      var filename;
+
+      result.hasMainEntry = false;
+
+      try
+      {
+         var packageJSON = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
+
+         if (typeof packageJSON.jspm === 'object' && typeof packageJSON.jspm.main === 'string')
+         {
+            result.hasMainEntry = true;
+
+            // Remove any local directory reference.
+            filename = packageJSON.jspm.main;
+            filename = filename.replace(new RegExp(`^\.${path.sep === '\\' ? `\\${path.sep}` : path.sep}`), '');
+
+            result.fullPathMain = result.fullPath + path.sep + filename;
+            result.relativePathMain = result.relativePath + path.sep + filename;
+         }
+         else if (typeof packageJSON.main === 'string')
+         {
+            result.hasMainEntry = true;
+
+            // Remove any local directory reference.
+            filename = packageJSON.main;
+            filename = filename.replace(new RegExp(`^\.${path.sep === '\\' ? `\\${path.sep}` : path.sep}`), '');
+
+            result.fullPathMain = result.fullPath + path.sep + filename;
+            result.relativePathMain = result.relativePath + path.sep + filename;
+         }
+
+         // Lastly check for `index.js` for NPM packages as the main entry point.
+         if (!result.hasMainEntry && result.scmType === 'npm' &&
+          fs.statSync(result.fullPath + path.sep + 'index.js').isFile())
+         {
+            result.hasMainEntry = true;
+            result.fullPathMain = result.fullPath + path.sep + 'index.js';
+            result.relativePathMain = result.relativePath + path.sep + 'index.js';
+         }
+      }
+      catch (err) { /* ... */ }
+
+      return result;
+   }
+
+   /**
+    * Parses the jspm_packages relative path for additional data about the package.
+    *
+    * @param {object}   result - Stores parsed package data.
+    * @param {object}   path - Node path module.
+    *
+    * @returns {*}
+    */
+   function parseRelativePath(result, path)
+   {
+      var values = result.relativePath.split(/^jspm_packages\/(.*)\/(.*)@(.*)/);
+
+      if (values[1].indexOf('github') === 0)
+      {
+         result.scmType = 'github';
+         result.version = values[3];
+
+         values = values[1].split(path.sep);
+
+         result.githubOwner = values[1];
+         result.link = 'https://github.com/' + result.githubOwner +'/' + result.actualPackageName;
+      }
+      else if (values[1].indexOf('npm') === 0)
+      {
+         result.scmType = 'npm';
+         result.version = values[3];
+         result.link = 'https://www.npmjs.com/package/' + values[2];
       }
 
       return result;
