@@ -624,13 +624,36 @@
             result.relativePathMain = result.relativePath + path.sep + filename;
          }
 
-         // Lastly check for `index.js` for NPM packages as the main entry point.
-         if (!result.hasMainEntry && result.scmType === 'npm' &&
-          fs.statSync(result.fullPath + path.sep + 'index.js').isFile())
+         // Copy repository data
+         if (typeof packageJSON.repository === 'object')
          {
-            result.hasMainEntry = true;
-            result.fullPathMain = result.fullPath + path.sep + 'index.js';
-            result.relativePathMain = result.relativePath + path.sep + 'index.js';
+            result.repository = packageJSON.repository;
+         }
+
+         if (result.packageType && result.packageType === 'npm')
+         {
+            // Parse any repository URL for specific SCM data
+            if (result.repository && typeof result.repository.url === 'string')
+            {
+               if (result.repository.url.match(new RegExp('^https?://github.com/')))
+               {
+                  // Remove `.git` for URL end.
+                  result.scmType = 'github';
+                  result.scmLink =
+                  {
+                     type: 'github',
+                     link: result.repository.url.replace(/\.git$/, '')
+                  };
+               }
+            }
+
+            // Check for default `index.js` for NPM packages as the main entry point.
+            if (!result.hasMainEntry && fs.statSync(result.fullPath + path.sep + 'index.js').isFile())
+            {
+               result.hasMainEntry = true;
+               result.fullPathMain = result.fullPath + path.sep + 'index.js';
+               result.relativePathMain = result.relativePath + path.sep + 'index.js';
+            }
          }
       }
       catch (err) { /* ... */ }
@@ -658,13 +681,22 @@
          values = values[1].split(path.sep);
 
          result.githubOwner = values[1];
-         result.link = 'https://github.com/' + result.githubOwner + '/' + result.actualPackageName;
+
+         result.scmLink =
+         {
+            type: 'github',
+            link: 'https://github.com/' + result.githubOwner + '/' + result.actualPackageName
+         };
       }
       else if (values[1].indexOf('npm') === 0)
       {
-         result.scmType = 'npm';
+         result.packageType = 'npm';
+         result.packageLink =
+         {
+            type: 'npm',
+            link: 'https://www.npmjs.com/package/' + values[2]
+         };
          result.version = values[3];
-         result.link = 'https://www.npmjs.com/package/' + values[2];
       }
 
       return result;
