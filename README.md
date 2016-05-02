@@ -1,4 +1,4 @@
-![typhonjs-config-jspm-parse](http://i.imgur.com/juoSdh4.png)
+![typhonjs-config-jspm-parse](https://i.imgur.com/juoSdh4.png)
 
 [![NPM](https://img.shields.io/npm/v/typhonjs-config-jspm-parse.svg?label=npm)](https://www.npmjs.com/package/typhonjs-config-jspm-parse)
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
