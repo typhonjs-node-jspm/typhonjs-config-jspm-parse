@@ -1,3 +1,6 @@
+## 0.6.0 (2016-05-02)
+- Added additional data to normalized package parsing including links to public Github / NPM modules in addition to main entry points.
+
 ## 0.5.0 (2016-03-13)
 - No new features. Finished integrating `typhonjs-npm-build-test`.
 
