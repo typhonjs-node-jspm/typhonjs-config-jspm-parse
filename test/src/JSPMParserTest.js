@@ -37,10 +37,10 @@ describe('JSPMParser Tests', function()
       var packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj);
 
       assert(JSON.stringify(packageMap) ===
-       '{"babel":"npm:babel-core@^5.8.0","babel-runtime":"npm:babel-runtime@^5.8.0","core-js":"npm:core-js@^1.2.0"}');
+       '{"babel":"npm:babel-core@^5.0.0","babel-runtime":"npm:babel-runtime@^5.0.0","core-js":"npm:core-js@^1.0.0"}');
 
       packageMap = JSPMParser.getPackageJSPMDevDependencies(packageObj, { babel: null });
-      assert(JSON.stringify(packageMap) === '{"babel":"npm:babel-core@^5.8.0"}');
+      assert(JSON.stringify(packageMap) === '{"babel":"npm:babel-core@^5.0.0"}');
    });
 
    it('getPackageResolver', function()
