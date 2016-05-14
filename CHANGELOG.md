@@ -1,3 +1,6 @@
+## 0.6.1 (2016-05-13)
+- Added SCM link creation for NPM modules that format repository URLs as `git://github.com/ instead of `https://github.com/`
+
 ## 0.6.0 (2016-05-02)
 - Added additional data to normalized package parsing including links to public Github / NPM modules in addition to main entry points.
 
