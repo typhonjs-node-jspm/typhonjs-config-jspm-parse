@@ -645,6 +645,19 @@
                      link: result.repository.url.replace(/\.git$/, '')
                   };
                }
+
+               // Some NPM modules format the url link with `git://`
+               else if (result.repository.url.match(new RegExp('^git://github.com/')))
+               {
+                  var tempLink = result.repository.url.replace(new RegExp('^git://github.com/'), 'https://github.com/');
+                  // Remove `.git` for URL end.
+                  result.scmType = 'github';
+                  result.scmLink =
+                  {
+                     type: 'github',
+                     link: tempLink.replace(/\.git$/, '')
+                  };
+               }
             }
 
             // Check for default `index.js` for NPM packages as the main entry point.
